@@ -127,7 +127,21 @@ Save and re-launch vim to use, enjoy!
 
 ### IntelliJ
 
-See the documentation for your editor, this varies between each one!
+Linux instructions:
+We first have to create a settings file on the command line:
+
+	cd /tmp
+	svn export https://github.com/daylerees/colour-schemes.git/trunk/jetbrains/
+	mv jetbrains colors
+	for file in `find colors -name '*.icls'`; do cp "${file}" `echo "${file}" | sed -e 's/\.icls$/.xml/'`; done
+	touch "IntelliJ IDEA Global Settings"
+	zip -r settings.jar IntelliJ\ IDEA\ Global\ Settings colors
+
+Now in _IntelliJ IDEA_:
+
+> File | Import Settings...
+
+and then load _/tmp/settings.jar_, which we just created.
 
 ### Sublime UI Themes
 
